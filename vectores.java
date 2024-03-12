@@ -22,15 +22,12 @@ public class vectores {
         System.out.print("V = {");
         for (i = 0; i < length - 1; i++) {
             if (arr[i] == (int) arr[i]) {
-                // Si el número es un entero, imprimirlo sin decimales
                 System.out.print((int) arr[i] + ", ");
             } else {
-                // Si tiene decimales, imprimirlo normalmente
                 System.out.print(arr[i] + ", ");
             }
         }
 
-        // Último elemento del vector
         if (arr[i] == (int) arr[i]) {
             System.out.println((int) arr[i] + "}");
         } else {
@@ -93,12 +90,12 @@ public class vectores {
     }
 //------------------------------------------------------------------------------
 
-    public static void cambiarXtoZ(int[] arr, short X, short Z) {
+    public static void cambiarXtoZ(int[] arr, short changeX, short toZ) {
         for (byte i = 0; i < arr.length; i++) {
-            if (arr[i] == X) {
-                arr[i] = Z;
+            if (arr[i] == changeX) {
+                arr[i] = toZ;
             }
         }
     }
-//------------------------------------------------------------------------------
+
 }

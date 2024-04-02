@@ -5,13 +5,19 @@ import java.util.Scanner;
 public class vectores {
 
     public static void imprimir(int[] arr) {
-        byte length = (byte) arr.length, i;
+        byte i;
 
-        System.out.print("V = {");
-        for (i = 0; i < length - 1; i++) {
-            System.out.print(arr[i] + ", ");
+        if (arr.length > 1) {
+            System.out.print("V = {");
+            for (i = 0; i < arr.length - 1; i++) {
+                System.out.print(arr[i] + ", ");
+            }
+            System.out.println(arr[i] + "}");
+        } else {
+            for (i = 0; i < arr.length; i++) {
+                System.out.print("V = {" + arr[i] + "}");
+            }
         }
-        System.out.println(arr[i] + "}");
     }
 //------------------------------------------------------------------------------
 
@@ -127,5 +133,77 @@ public class vectores {
         }
 
         return menor;
+    }
+//------------------------------------------------------------------------------
+
+    public static int[] concatenar2Vectores(int[] arr1, int[] arr2, int[] arrConcat) {
+
+        byte length1 = (byte) arr1.length, length2 = (byte) arr2.length, lengthConcat;
+
+        lengthConcat = (byte) (length1 + length2);
+
+        for (byte i = 0; i < length1; i++) {
+            arrConcat[i] = arr1[i];
+        }
+
+        for (byte i = 0; i < length2; i++) {
+            arrConcat[i + length1] = arr2[i];
+        }
+
+        return arrConcat;
+
+    }
+//------------------------------------------------------------------------------
+
+    public static boolean esPerfecto(int numero) {
+        int sumaDivisores = 1;
+        for (int i = 2; i * i <= numero; i++) {
+            if (numero % i == 0) {
+                sumaDivisores += i;
+                if (i != numero / i) {
+                    sumaDivisores += numero / i;
+                }
+            }
+        }
+        return sumaDivisores == numero && numero != 1;
+    }
+//------------------------------------------------------------------------------
+
+    public static int[] interleaveVectors(int[] vectorA, int[] vectorB) {
+        int maxLength = Math.max(vectorA.length, vectorB.length);
+        int[] vectorC = new int[maxLength * 2];
+
+        int indexC = 0;
+        int indexA = 0;
+        int indexB = 0;
+
+        while (indexA < vectorA.length || indexB < vectorB.length) {
+            if (indexA < vectorA.length) {
+                vectorC[indexC++] = vectorA[indexA++];
+            }
+            if (indexA < vectorA.length) {
+                vectorC[indexC++] = vectorA[indexA++];
+            }
+            if (indexB < vectorB.length) {
+                vectorC[indexC++] = vectorB[indexB++];
+            }
+            if (indexB < vectorB.length) {
+                vectorC[indexC++] = vectorB[indexB++];
+            }
+        }
+
+        int[] result = new int[indexC];
+        System.arraycopy(vectorC, 0, result, 0, indexC);
+
+        return result;
+    }
+//------------------------------------------------------------------------------
+    
+    public static void insertarVector(int[] V1, int[] V2, int posicionInicial) {
+        int indiceV1 = 0;
+        for (int i = posicionInicial; i < V2.length && indiceV1 < V1.length; i++) {
+            V2[i] = V1[indiceV1];
+            indiceV1++;
+        }
     }
 }

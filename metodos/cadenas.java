@@ -81,8 +81,8 @@ public class cadenas {
             System.out.println("\nLa segunda cadena no esta incluida en la primera.");
         }
     }
-
 //------------------------------------------------------------------------------
+
     public static String eliminarVocales(String cadena) {
 
         StringBuilder sb = new StringBuilder();
@@ -96,5 +96,33 @@ public class cadenas {
         }
 
         return sb.toString();
+    }
+//------------------------------------------------------------------------------
+
+    public static int contarLetrasComunes(String palabra1, String palabra2) {
+        int[] frecuencia1 = new int[26];
+        int[] frecuencia2 = new int[26];
+        int letrasComunes = 0;
+
+        for (char c : palabra1.toCharArray()) {
+            frecuencia1[c - 'a']++;
+        }
+
+        for (char c : palabra2.toCharArray()) {
+            frecuencia2[c - 'a']++;
+        }
+
+        for (int i = 0; i < 26; i++) {
+            if (frecuencia1[i] > 0 && frecuencia2[i] > 0) {
+                letrasComunes++;
+            }
+        }
+
+        return letrasComunes;
+    }
+//------------------------------------------------------------------------------
+
+    public static String eliminarEspacios(String cadena) {
+        return cadena.replaceAll("\\s", "");
     }
 }

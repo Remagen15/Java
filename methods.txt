@@ -1,0 +1,34 @@
+//centrar panel
+
+GridBagConstraints centro = new GridBagConstraints();
+
+getContentPane().setLayout(new GridBagLayout());
+        centro.gridx = 0;
+        centro.gridy = 0;
+
+        getContentPane().add(panel, centro);
+
+
+//insertar imagen en un boton
+
+public Icon ponerIcono(String url, JButton boton) {
+
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+
+        int ancho = boton.getWidth();
+
+        int alto = boton.getHeight();
+
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        return icono;
+    }
+
+    public Icon setIconPresionado(String url, JButton boton, int ancho, int altura) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int widht = boton.getWidth() - ancho;
+
+        int height = boton.getHeight() - altura;
+
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(widht, height, Image.SCALE_DEFAULT));
+        return icono;
+    }

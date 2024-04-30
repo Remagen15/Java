@@ -32,3 +32,21 @@ public Icon ponerIcono(String url, JButton boton) {
         ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(widht, height, Image.SCALE_DEFAULT));
         return icono;
     }
+
+//Imagen
+
+class FondoPanel extends JPanel {
+
+    private Image imagen;
+
+    @Override
+    public void paint(Graphics g) {
+        imagen = new ImageIcon(getClass().getResource("/Sources/dsfond.gif")).getImage();
+
+        g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+
+        setOpaque(false);
+
+        super.paint(g);
+    }
+}
